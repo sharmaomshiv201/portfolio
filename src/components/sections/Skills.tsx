@@ -9,7 +9,7 @@ export function Skills() {
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {site.skills.map((group, i) => (
           <Reveal key={group.category} delay={i * 60}>
-            <div className="h-full rounded-xl border border-border bg-card/75 p-5 backdrop-blur-sm">
+            <div className="spotlight-card h-full rounded-xl border border-border bg-card/75 p-5 backdrop-blur-sm">
               <h3 className="mb-3 text-sm font-semibold text-muted">
                 {group.category}
               </h3>

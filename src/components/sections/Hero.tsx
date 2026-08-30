@@ -91,7 +91,7 @@ export function Hero() {
         <Reveal delay={220} className="lg:justify-self-end">
           <div className="mx-auto w-full max-w-sm space-y-5">
             <Portrait src={site.profileImage} name={site.name} />
-            <dl className="w-full space-y-5 rounded-2xl border border-border bg-card/60 p-6 backdrop-blur-sm sm:p-7">
+            <dl className="spotlight-card w-full space-y-5 rounded-2xl border border-border bg-card/60 p-6 backdrop-blur-sm sm:p-7">
               <Fact icon={<Briefcase size={15} />} term="Currently">
                 {current.role} · {current.company}
               </Fact>

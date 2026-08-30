@@ -13,7 +13,7 @@ export function About() {
           ))}
         </Reveal>
         <Reveal delay={80} className="lg:justify-self-end">
-          <div className="rounded-xl border border-border bg-card p-6 text-sm lg:max-w-sm">
+          <div className="spotlight-card rounded-xl border border-border bg-card p-6 text-sm lg:max-w-sm">
             <div className="flex items-center gap-2 text-muted">
               <MapPin size={15} className="text-accent" />
               {site.location}

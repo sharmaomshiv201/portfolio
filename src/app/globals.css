@@ -114,6 +114,39 @@ body::after {
   );
 }
 
+/* Cursor spotlight — any card with .spotlight-card lights up under the pointer.
+   Coordinates are set on the element by the global <Spotlight> listener. */
+.spotlight-card {
+  position: relative;
+}
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(
+    240px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in oklab, var(--accent) 15%, transparent),
+    transparent 60%
+  );
+}
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+.spotlight-card > * {
+  position: relative;
+  z-index: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .spotlight-card::before {
+    transition: none;
+  }
+}
+
 /* Scroll-reveal */
 .reveal {
   opacity: 0;

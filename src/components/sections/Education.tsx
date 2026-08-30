@@ -16,7 +16,7 @@ export function Education() {
       <div className="flex flex-col gap-3">
         {site.education.map((ed, i) => (
           <Reveal key={`${ed.school}-${i}`} delay={i * 60}>
-            <div className="inline-flex w-full max-w-xl flex-col gap-3 rounded-2xl border border-border/60 bg-background/30 px-5 py-4 backdrop-blur-md sm:flex-row sm:items-center sm:gap-5">
+            <div className="spotlight-card inline-flex w-full max-w-xl flex-col gap-3 rounded-2xl border border-border/60 bg-background/30 px-5 py-4 backdrop-blur-md sm:flex-row sm:items-center sm:gap-5">
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20">
                 <GraduationCap size={18} />
               </span>

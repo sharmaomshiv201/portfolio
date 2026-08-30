@@ -5,6 +5,7 @@ import { site } from "@/content/site";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { Spotlight } from "@/components/Spotlight";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -71,6 +72,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <ScrollProgress />
+        <Spotlight />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
