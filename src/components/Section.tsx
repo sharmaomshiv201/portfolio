@@ -10,27 +10,35 @@ export function Section({
   title,
   children,
   className = "",
+  tint = false,
 }: {
   id: string;
   label: string;
   title: string;
   children: ReactNode;
   className?: string;
+  /** Render on a subtly toned, grid-textured panel for scroll rhythm */
+  tint?: boolean;
 }) {
   return (
     <section
       id={id}
-      className={`${CONTAINER} scroll-mt-20 py-16 sm:py-24 ${className}`}
+      className={`scroll-mt-20 ${tint ? "section-tint" : "overflow-x-clip"}`}
     >
-      <Reveal>
-        <div className="mb-10 flex items-baseline gap-3 sm:mb-12">
-          <span className="font-mono text-sm text-accent">{label}</span>
-          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            {title}
-          </h2>
-        </div>
-      </Reveal>
-      {children}
+      <div className={`${CONTAINER} relative z-[1] py-20 sm:py-28 ${className}`}>
+        <Reveal>
+          <header className="relative mb-12 sm:mb-16">
+            <span aria-hidden className="section-numeral">
+              {label}
+            </span>
+            <h2 className="relative text-3xl font-semibold tracking-tight sm:text-4xl">
+              {title}
+            </h2>
+            <div className="relative mt-5 h-px w-full max-w-[420px] bg-gradient-to-r from-accent/60 via-border to-transparent" />
+          </header>
+        </Reveal>
+        {children}
+      </div>
     </section>
   );
 }
