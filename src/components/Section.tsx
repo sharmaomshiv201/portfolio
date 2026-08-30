@@ -14,6 +14,7 @@ export function Section({
   tint = false,
   bgImage,
   bgImageAlt = "",
+  backdrop,
 }: {
   id: string;
   label: string;
@@ -25,14 +26,23 @@ export function Section({
   /** Full-bleed photo behind the whole section, under a legibility scrim */
   bgImage?: string;
   bgImageAlt?: string;
+  /** Arbitrary decorative layer rendered full-bleed behind the content */
+  backdrop?: ReactNode;
 }) {
+  const decorated = Boolean(bgImage || backdrop);
+
   return (
     <section
       id={id}
       className={`relative scroll-mt-20 ${
         tint ? "section-tint" : "overflow-x-clip"
-      } ${bgImage ? "isolate" : ""}`}
+      } ${decorated ? "isolate" : ""}`}
     >
+      {backdrop && (
+        <div aria-hidden className="absolute inset-0 -z-10">
+          {backdrop}
+        </div>
+      )}
       {bgImage && (
         <>
           <SmartImage
@@ -40,10 +50,7 @@ export function Section({
             alt={bgImageAlt}
             className="absolute inset-0 -z-10 h-full w-full object-cover"
           />
-          <div
-            aria-hidden
-            className="absolute inset-0 -z-10 bg-background/55"
-          />
+          <div aria-hidden className="absolute inset-0 -z-10 bg-background/55" />
           <div
             aria-hidden
             className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background/20 to-background"

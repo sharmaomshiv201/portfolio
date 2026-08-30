@@ -9,21 +9,25 @@ export function Education() {
   return (
     <Section
       id="education"
-      label="05"
+      label="02"
       title="Education"
       bgImage={campus}
       bgImageAlt="BITS Pilani campus"
     >
-      <div className="grid gap-5 sm:grid-cols-2 lg:max-w-3xl">
+      <div className="flex flex-col gap-3">
         {site.education.map((ed, i) => (
           <Reveal key={`${ed.school}-${i}`} delay={i * 60}>
-            <div className="flex h-full flex-col rounded-xl border border-border bg-card/80 p-6 backdrop-blur-sm">
-              <GraduationCap size={20} className="text-accent" />
-              <h3 className="mt-4 text-lg font-semibold">{ed.degree}</h3>
-              <p className="mt-1 text-sm text-muted">{ed.school}</p>
-              <p className="mt-auto pt-4 font-mono text-xs text-muted">
+            <div className="inline-flex w-full max-w-xl flex-col gap-3 rounded-2xl border border-border/60 bg-background/30 px-5 py-4 backdrop-blur-md sm:flex-row sm:items-center sm:gap-5">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20">
+                <GraduationCap size={18} />
+              </span>
+              <div className="min-w-0 flex-1">
+                <p className="font-semibold leading-tight">{ed.degree}</p>
+                <p className="text-sm text-muted">{ed.school}</p>
+              </div>
+              <span className="shrink-0 font-mono text-xs text-muted">
                 {ed.period}
-              </p>
+              </span>
             </div>
           </Reveal>
         ))}
