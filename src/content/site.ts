@@ -172,18 +172,6 @@ export const site = {
       image: "/bits-pilani.jpg",
     },
   ] as EducationItem[],
-
-  /**
-   * Contact form delivery. Submissions POST straight from the browser
-   * to web3forms.com, which emails them to you — no server needed.
-   *   1. Get a free access key at https://web3forms.com (enter your
-   *      email, they send you a key — ~30 seconds, no account).
-   *   2. Add it to .env.local:   NEXT_PUBLIC_WEB3FORMS_KEY=xxxx
-   *   3. Add the same var in your host's env (e.g. Vercel).
-   * Until a key is set the form falls back to opening the visitor's
-   * mail client with the note pre-filled.
-   */
-  web3formsKey: process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "",
 };
 
 export const navLinks = [

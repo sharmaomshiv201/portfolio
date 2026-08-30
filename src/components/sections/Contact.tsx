@@ -6,10 +6,13 @@ import { site } from "@/content/site";
 import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 
-type Status = "idle" | "submitting" | "success" | "mailto" | "error";
+type Status = "idle" | "submitting" | "success" | "error";
+
+// FormSubmit relays the submission straight to my inbox — no server,
+// no API key. https://formsubmit.co
+const ENDPOINT = `https://formsubmit.co/ajax/${site.email}`;
 
 export function Contact() {
-  const hasKey = Boolean(site.web3formsKey);
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
 
@@ -18,38 +21,23 @@ export function Contact() {
     const form = e.currentTarget;
     const data = new FormData(form);
 
-    const name = String(data.get("name") || "");
-    const email = String(data.get("email") || "");
-    const message = String(data.get("message") || "");
+    // Honeypot — real people leave it empty.
+    if (data.get("_honey")) return;
 
-    // No form service configured → open the visitor's mail client
-    // with the note pre-filled. Pure frontend, nothing to set up.
-    if (!hasKey) {
-      const subject = `Portfolio note from ${name}`;
-      const body = `${message}\n\n— ${name} (${email})`;
-      window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
-        subject
-      )}&body=${encodeURIComponent(body)}`;
-      setStatus("mailto");
-      return;
-    }
-
-    // Honeypot — only relevant for the automated send path.
-    if (data.get("botcheck")) return;
-
-    data.append("access_key", site.web3formsKey);
-    data.append("subject", `Portfolio note from ${name}`);
+    data.set("_subject", `Portfolio note from ${data.get("name") || "someone"}`);
+    data.set("_template", "table");
+    data.set("_captcha", "false");
 
     setStatus("submitting");
     setError("");
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch(ENDPOINT, {
         method: "POST",
         headers: { Accept: "application/json" },
         body: data,
       });
       const json = await res.json();
-      if (json.success) {
+      if (res.ok && (json.success === "true" || json.success === true)) {
         setStatus("success");
         form.reset();
       } else {
@@ -68,7 +56,7 @@ export function Contact() {
         <Reveal className="max-w-md space-y-4 text-lg leading-relaxed text-muted">
           <p>
             Have a project in mind, a role to fill, or just want to say hello?
-            Drop a note below and it&apos;ll reach my inbox — or email me
+            Drop a note below and it&apos;ll land in my inbox — or email me
             directly.
           </p>
           <a
@@ -97,23 +85,11 @@ export function Contact() {
             <Confirmation>
               Thanks — your note is on its way. I&apos;ll get back to you soon.
             </Confirmation>
-          ) : status === "mailto" ? (
-            <Confirmation>
-              Your email app should have opened with the note ready — just hit
-              send. If nothing happened, write to{" "}
-              <a
-                href={`mailto:${site.email}`}
-                className="text-accent underline underline-offset-2"
-              >
-                {site.email}
-              </a>
-              .
-            </Confirmation>
           ) : (
             <form onSubmit={onSubmit} className="space-y-4">
               <input
-                type="checkbox"
-                name="botcheck"
+                type="text"
+                name="_honey"
                 tabIndex={-1}
                 autoComplete="off"
                 className="hidden"
@@ -149,11 +125,6 @@ export function Contact() {
                 {status === "submitting" ? "Sending…" : "Send note"}
                 <Send size={15} />
               </button>
-              {!hasKey && (
-                <p className="text-xs text-muted">
-                  Opens your email app with the note pre-filled.
-                </p>
-              )}
             </form>
           )}
         </Reveal>

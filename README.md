@@ -32,21 +32,13 @@ socials, and email there.
 
 ## Contact form
 
-The form posts straight from the browser to [Web3Forms](https://web3forms.com),
-which emails you each submission — no server required.
+The form POSTs from the browser to [FormSubmit](https://formsubmit.co), which
+relays each submission to the address in `site.email`. No server, no API key,
+no env vars.
 
-1. Get a free access key at https://web3forms.com (enter your email, they send
-   you a key — ~30 seconds, no account needed).
-2. Add it to `.env.local`:
-
-   ```
-   NEXT_PUBLIC_WEB3FORMS_KEY=your-key-here
-   ```
-
-3. On your host (e.g. Vercel), add the same environment variable.
-
-Without a key the form falls back to opening the visitor's mail client with the
-note pre-filled.
+**One-time activation:** the first time the form is submitted (do it yourself
+after deploying), FormSubmit emails that address an activation link. Click it
+once and every later submission is delivered straight to the inbox.
 
 ## Deploy
 
@@ -54,8 +46,8 @@ Works out of the box on **Vercel** (recommended) or **Netlify**:
 
 - Push this repo to GitHub.
 - Import it in Vercel → it auto-detects Next.js.
-- Add the `NEXT_PUBLIC_WEB3FORMS_KEY` env var.
-- Deploy.
+- Deploy. Then submit the contact form once and click FormSubmit's activation
+  email.
 
 For a purely static host, add `output: "export"` to `next.config.ts` and run
 `npm run build` — the `out/` folder is a static site.
