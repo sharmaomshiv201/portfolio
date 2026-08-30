@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { Spotlight } from "@/components/Spotlight";
 import { Analytics } from "@vercel/analytics/next";
+import { CloudflareAnalytics } from "@/components/CloudflareAnalytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -77,6 +78,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="flex-1">{children}</main>
         <Footer />
         <Analytics />
+        <CloudflareAnalytics />
       </body>
     </html>
   );

@@ -83,6 +83,11 @@ export const site = {
   /** Absolute URL of the deployed site — used for SEO/OpenGraph */
   url: "https://portfolio-seven-eta-w2b1lh6ato.vercel.app",
 
+  /** Cloudflare Web Analytics beacon token (dash.cloudflare.com →
+   *  Web Analytics → add site → copy the data-cf-beacon token).
+   *  Leave empty to disable. Not a secret — it ships in the page. */
+  cloudflareToken: "",
+
   socials: [
     { label: "GitHub", href: "https://github.com/sharmaomshiv201" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/om-shiv/" },
