@@ -3,28 +3,48 @@
 import { useEffect } from "react";
 
 /**
- * One delegated pointer listener for the whole page. When the cursor is
- * over any `.spotlight-card`, it writes rect-relative coordinates to that
- * element's `--mx` / `--my`, which the CSS radial-gradient reads.
+ * One delegated pointer listener for the whole page:
+ *  - drives a page-wide glow that follows the cursor (--cursor-x/y on <body>)
+ *  - and, when the pointer is over a `.spotlight-card`, that card's local
+ *    highlight (--mx/--my, rect-relative).
+ * Updates are coalesced into a single rAF per frame.
  */
 export function Spotlight() {
   useEffect(() => {
+    if (window.matchMedia("(hover: none)").matches) return;
+
     let raf = 0;
-    let last: HTMLElement | null = null;
+    let vx = 0;
+    let vy = 0;
+    let card: HTMLElement | null = null;
+    let cx = 0;
+    let cy = 0;
+
+    const flush = () => {
+      raf = 0;
+      const body = document.body.style;
+      body.setProperty("--cursor-x", `${vx}px`);
+      body.setProperty("--cursor-y", `${vy}px`);
+      if (card) {
+        card.style.setProperty("--mx", `${cx}px`);
+        card.style.setProperty("--my", `${cy}px`);
+      }
+    };
 
     const onMove = (e: PointerEvent) => {
-      const target = e.target as Element | null;
-      const card =
-        (target?.closest?.(".spotlight-card") as HTMLElement | null) ?? null;
-      last = card;
-      if (!card) return;
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        if (last !== card) return;
+      vx = e.clientX;
+      vy = e.clientY;
+      const el =
+        (e.target as Element | null)?.closest?.(
+          ".spotlight-card"
+        ) as HTMLElement | null;
+      card = el ?? null;
+      if (card) {
         const r = card.getBoundingClientRect();
-        card.style.setProperty("--mx", `${e.clientX - r.left}px`);
-        card.style.setProperty("--my", `${e.clientY - r.top}px`);
-      });
+        cx = e.clientX - r.left;
+        cy = e.clientY - r.top;
+      }
+      if (!raf) raf = requestAnimationFrame(flush);
     };
 
     window.addEventListener("pointermove", onMove, { passive: true });

@@ -64,6 +64,25 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* page-wide glow that follows the cursor (coords set by <Spotlight>) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  background: radial-gradient(
+    550px circle at var(--cursor-x, 50%) var(--cursor-y, 50%),
+    color-mix(in oklab, var(--accent) 8%, transparent),
+    transparent 50%
+  );
+}
+@media (hover: none) {
+  body::before {
+    display: none;
+  }
+}
+
 /* fixed film grain over the whole page — kills the flat-fill look */
 body::after {
   content: "";
