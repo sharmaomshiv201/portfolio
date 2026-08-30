@@ -74,7 +74,7 @@ export const site = {
   resumePdf: "/resume.pdf",
 
   /** Absolute URL of the deployed site — used for SEO/OpenGraph */
-  url: "https://your-domain.com",
+  url: "https://portfolio-seven-eta-w2b1lh6ato.vercel.app",
 
   socials: [
     { label: "GitHub", href: "https://github.com/sharmaomshiv201" },
