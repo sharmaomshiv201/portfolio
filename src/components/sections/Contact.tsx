@@ -64,8 +64,8 @@ export function Contact() {
 
   return (
     <Section id="contact" label="05" title="Leave a note">
-      <div className="grid gap-10 md:grid-cols-[1fr_1.2fr]">
-        <Reveal className="space-y-4 text-[1.0625rem] leading-relaxed text-muted">
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:gap-16">
+        <Reveal className="max-w-md space-y-4 text-lg leading-relaxed text-muted">
           <p>
             Have a project in mind, a role to fill, or just want to say hello?
             Drop a note below and it&apos;ll reach my inbox — or email me
@@ -92,7 +92,7 @@ export function Contact() {
           </div>
         </Reveal>
 
-        <Reveal delay={80}>
+        <Reveal delay={80} className="w-full max-w-2xl">
           {status === "success" ? (
             <Confirmation>
               Thanks — your note is on its way. I&apos;ll get back to you soon.

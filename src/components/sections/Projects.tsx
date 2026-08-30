@@ -10,12 +10,12 @@ export function Projects() {
 
   return (
     <Section id="projects" label="03" title="Projects">
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((p, i) => (
-          <Reveal key={p.title} delay={(i % 2) * 60}>
-            <article className="group flex h-full flex-col rounded-xl border border-border bg-card p-5 transition-colors hover:border-foreground/25">
+          <Reveal key={p.title} delay={(i % 3) * 60}>
+            <article className="group flex h-full flex-col rounded-xl border border-border bg-card p-6 transition-colors hover:border-foreground/25">
               <div className="mb-3 flex items-start justify-between gap-3">
-                <h3 className="text-base font-semibold">{p.title}</h3>
+                <h3 className="text-lg font-semibold">{p.title}</h3>
                 <div className="flex shrink-0 gap-2 text-muted">
                   {p.repo && (
                     <a

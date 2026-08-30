@@ -5,7 +5,7 @@ import { Reveal } from "@/components/Reveal";
 export function Skills() {
   return (
     <Section id="skills" label="02" title="Skills">
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {site.skills.map((group, i) => (
           <Reveal key={group.category} delay={i * 60}>
             <div className="rounded-xl border border-border bg-card p-5">

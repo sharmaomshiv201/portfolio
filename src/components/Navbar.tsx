@@ -32,7 +32,7 @@ export function Navbar() {
           : "border-b border-transparent"
       }`}
     >
-      <nav className="mx-auto flex h-16 max-w-5xl items-center justify-between px-5">
+      <nav className="mx-auto flex h-16 w-full max-w-[1600px] items-center justify-between px-5 sm:px-8 lg:px-12 xl:px-16">
         <Link
           href="/"
           className="grid h-9 w-9 place-items-center rounded-lg bg-foreground font-mono text-sm font-bold text-background"
@@ -71,7 +71,7 @@ export function Navbar() {
 
       {open && (
         <div className="border-t border-border bg-background md:hidden">
-          <div className="mx-auto flex max-w-5xl flex-col px-5 py-2">
+          <div className="mx-auto flex w-full max-w-[1600px] flex-col px-5 py-2 sm:px-8">
             {navLinks.map((l) => (
               <Link
                 key={l.href}
