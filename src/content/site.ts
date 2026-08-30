@@ -61,6 +61,13 @@ export const site = {
     "I'm a backend engineer at NeoGrowth, where I build fintech infrastructure at scale, from an audit-grade Estimated Credit Loss platform to a Treasury Management System spanning 10+ banking integrations. My core stack is Python, Django, Celery, Redis and AWS, backed by MySQL and MongoDB.",
     "Outside work I build RAG and agentic systems independently, with a focus on retrieval architecture and LLM-provider abstraction.",
   ],
+  /** Small numbers shown in the About section */
+  stats: [
+    { value: "10+", label: "banking integrations shipped" },
+    { value: "10M+", label: "records migrated, zero data loss" },
+    { value: "80%", label: "more async-pipeline throughput" },
+    { value: "100+", label: "daily manual entries removed" },
+  ],
   location: "India",
   /** Shown on the Contact section and used for the mailto: link */
   email: "omshiivv@gmail.com",
