@@ -6,7 +6,7 @@ import { site } from "@/content/site";
 import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 
-type Status = "idle" | "submitting" | "success" | "error";
+type Status = "idle" | "submitting" | "success" | "mailto" | "error";
 
 export function Contact() {
   const hasKey = Boolean(site.web3formsKey);
@@ -18,11 +18,27 @@ export function Contact() {
     const form = e.currentTarget;
     const data = new FormData(form);
 
-    // Honeypot — bots fill hidden fields, humans don't.
+    const name = String(data.get("name") || "");
+    const email = String(data.get("email") || "");
+    const message = String(data.get("message") || "");
+
+    // No form service configured → open the visitor's mail client
+    // with the note pre-filled. Pure frontend, nothing to set up.
+    if (!hasKey) {
+      const subject = `Portfolio note from ${name}`;
+      const body = `${message}\n\n— ${name} (${email})`;
+      window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
+        subject
+      )}&body=${encodeURIComponent(body)}`;
+      setStatus("mailto");
+      return;
+    }
+
+    // Honeypot — only relevant for the automated send path.
     if (data.get("botcheck")) return;
 
     data.append("access_key", site.web3formsKey);
-    data.append("subject", `Portfolio message from ${data.get("name")}`);
+    data.append("subject", `Portfolio note from ${name}`);
 
     setStatus("submitting");
     setError("");
@@ -47,12 +63,13 @@ export function Contact() {
   }
 
   return (
-    <Section id="contact" label="05" title="Get in touch">
+    <Section id="contact" label="05" title="Leave a note">
       <div className="grid gap-10 md:grid-cols-[1fr_1.2fr]">
         <Reveal className="space-y-4 text-[1.0625rem] leading-relaxed text-muted">
           <p>
             Have a project in mind, a role to fill, or just want to say hello?
-            The fastest way to reach me is email.
+            Drop a note below and it&apos;ll reach my inbox — or email me
+            directly.
           </p>
           <a
             href={`mailto:${site.email}`}
@@ -77,11 +94,22 @@ export function Contact() {
 
         <Reveal delay={80}>
           {status === "success" ? (
-            <div className="flex items-center gap-3 rounded-xl border border-accent/40 bg-accent/[0.06] p-5 text-sm">
-              <Check size={18} className="shrink-0 text-accent" />
-              Thanks — your message is on its way. I&apos;ll get back to you soon.
-            </div>
-          ) : hasKey ? (
+            <Confirmation>
+              Thanks — your note is on its way. I&apos;ll get back to you soon.
+            </Confirmation>
+          ) : status === "mailto" ? (
+            <Confirmation>
+              Your email app should have opened with the note ready — just hit
+              send. If nothing happened, write to{" "}
+              <a
+                href={`mailto:${site.email}`}
+                className="text-accent underline underline-offset-2"
+              >
+                {site.email}
+              </a>
+              .
+            </Confirmation>
+          ) : (
             <form onSubmit={onSubmit} className="space-y-4">
               <input
                 type="checkbox"
@@ -92,10 +120,20 @@ export function Contact() {
                 aria-hidden
               />
               <div className="grid gap-4 sm:grid-cols-2">
-                <Field label="Name" name="name" />
-                <Field label="Email" name="email" type="email" />
+                <Field label="Your name" name="name" placeholder="Ada Lovelace" />
+                <Field
+                  label="Your email"
+                  name="email"
+                  type="email"
+                  placeholder="ada@example.com"
+                />
               </div>
-              <Field label="Message" name="message" textarea />
+              <Field
+                label="Note"
+                name="message"
+                textarea
+                placeholder="Hi Om — I'd love to talk about…"
+              />
 
               {status === "error" && (
                 <p className="flex items-center gap-2 text-sm text-red-500">
@@ -108,36 +146,28 @@ export function Contact() {
                 disabled={status === "submitting"}
                 className="inline-flex items-center gap-2 rounded-lg bg-foreground px-5 py-3 text-sm font-medium text-background transition-transform hover:-translate-y-0.5 disabled:opacity-60"
               >
-                {status === "submitting" ? "Sending…" : "Send message"}
+                {status === "submitting" ? "Sending…" : "Send note"}
                 <Send size={15} />
               </button>
+              {!hasKey && (
+                <p className="text-xs text-muted">
+                  Opens your email app with the note pre-filled.
+                </p>
+              )}
             </form>
-          ) : (
-            <div className="rounded-xl border border-border bg-card p-5 text-sm text-muted">
-              <p>
-                The contact form isn&apos;t configured yet. Add a free{" "}
-                <a
-                  href="https://web3forms.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-accent underline underline-offset-2"
-                >
-                  Web3Forms
-                </a>{" "}
-                key to <code className="font-mono">.env.local</code> to enable it.
-                Until then, use the email link.
-              </p>
-              <a
-                href={`mailto:${site.email}`}
-                className="mt-4 inline-flex items-center gap-2 rounded-lg bg-foreground px-4 py-2.5 font-medium text-background"
-              >
-                Email me <Send size={14} />
-              </a>
-            </div>
           )}
         </Reveal>
       </div>
     </Section>
+  );
+}
+
+function Confirmation({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex items-start gap-3 rounded-xl border border-accent/40 bg-accent/[0.06] p-5 text-sm">
+      <Check size={18} className="mt-0.5 shrink-0 text-accent" />
+      <p>{children}</p>
+    </div>
   );
 }
 
@@ -146,21 +176,35 @@ function Field({
   name,
   type = "text",
   textarea = false,
+  placeholder,
 }: {
   label: string;
   name: string;
   type?: string;
   textarea?: boolean;
+  placeholder?: string;
 }) {
   const cls =
-    "w-full rounded-lg border border-border bg-card px-3.5 py-2.5 text-sm outline-none transition-colors placeholder:text-muted/60 focus:border-accent";
+    "w-full rounded-lg border border-border bg-card px-3.5 py-2.5 text-sm outline-none transition-colors placeholder:text-muted/50 focus:border-accent";
   return (
     <label className="block">
       <span className="mb-1.5 block text-xs font-medium text-muted">{label}</span>
       {textarea ? (
-        <textarea name={name} required rows={5} className={cls} />
+        <textarea
+          name={name}
+          required
+          rows={5}
+          placeholder={placeholder}
+          className={cls}
+        />
       ) : (
-        <input name={name} type={type} required className={cls} />
+        <input
+          name={name}
+          type={type}
+          required
+          placeholder={placeholder}
+          className={cls}
+        />
       )}
     </label>
   );
