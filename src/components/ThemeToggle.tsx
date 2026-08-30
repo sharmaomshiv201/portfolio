@@ -14,6 +14,20 @@ export function ThemeToggle() {
 
   function toggle() {
     const next = !dark;
+    const label = next ? "dark mode" : "light mode";
+
+    // This site is designed for dark mode — make switching a deliberate choice.
+    if (
+      !window.confirm(
+        `Switch to ${label}? This portfolio is designed to be viewed in dark mode.`
+      )
+    )
+      return;
+    if (
+      !window.confirm(`Are you sure? This will switch the whole site to ${label}.`)
+    )
+      return;
+
     setDark(next);
     document.documentElement.classList.toggle("dark", next);
     try {
