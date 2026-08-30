@@ -10,7 +10,7 @@ export function Education() {
       <div className="space-y-5">
         {site.education.map((ed, i) => (
           <Reveal key={`${ed.school}-${i}`} delay={i * 60}>
-            <div className="grid overflow-hidden rounded-xl border border-border bg-card md:grid-cols-[1.4fr_1fr]">
+            <div className="grid overflow-hidden rounded-xl border border-border bg-card sm:min-h-[240px] md:grid-cols-[1.4fr_1fr]">
               <div className="flex flex-col justify-center p-6 sm:p-8">
                 <GraduationCap size={20} className="text-accent" />
                 <h3 className="mt-4 text-xl font-semibold">{ed.degree}</h3>
