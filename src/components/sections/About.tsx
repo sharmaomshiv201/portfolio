@@ -1,4 +1,4 @@
-import { MapPin, Mail } from "lucide-react";
+import { MapPin, Mail, ArrowUpRight } from "lucide-react";
 import { site } from "@/content/site";
 import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
@@ -27,6 +27,22 @@ export function About() {
                 {site.email}
               </a>
             </div>
+            {site.socials.map((s) => (
+              <div
+                key={s.href}
+                className="mt-3 flex items-center gap-2 text-muted"
+              >
+                <ArrowUpRight size={15} className="text-accent" />
+                <a
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-foreground"
+                >
+                  {s.label}
+                </a>
+              </div>
+            ))}
           </div>
         </Reveal>
       </div>
