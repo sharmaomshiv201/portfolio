@@ -63,7 +63,7 @@ export function Navbar() {
         <Link
           href="/"
           className="grid h-9 w-9 place-items-center rounded-lg bg-foreground font-mono text-sm font-bold text-background"
-          aria-label={`${site.name} — home`}
+          aria-label={`${site.name}, home`}
         >
           {initials}
         </Link>

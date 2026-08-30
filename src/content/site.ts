@@ -55,10 +55,10 @@ export const site = {
   role: "Backend Engineer",
   /** One or two sentences. Shows under your name in the hero. */
   tagline:
-    "Backend engineer building fintech infrastructure at scale — audit-grade credit-loss and treasury systems on Django, Celery and AWS. Building RAG and agentic systems on the side.",
+    "Backend engineer building fintech infrastructure at scale. Audit-grade credit-loss and treasury systems on Django, Celery and AWS, plus RAG and agentic systems on the side.",
   /** Longer paragraph(s) for the About section */
   about: [
-    "I'm a backend engineer at NeoGrowth, where I build fintech infrastructure at scale — from an audit-grade Estimated Credit Loss platform to a Treasury Management System spanning 10+ banking integrations. My core stack is Python, Django, Celery, Redis and AWS, backed by MySQL and MongoDB.",
+    "I'm a backend engineer at NeoGrowth, where I build fintech infrastructure at scale, from an audit-grade Estimated Credit Loss platform to a Treasury Management System spanning 10+ banking integrations. My core stack is Python, Django, Celery, Redis and AWS, backed by MySQL and MongoDB.",
     "Outside work I build RAG and agentic systems independently, with a focus on retrieval architecture and LLM-provider abstraction.",
   ],
   location: "India",
@@ -124,7 +124,7 @@ export const site = {
 
   projects: [
     {
-      title: "Stringer — News Digest Assistant",
+      title: "Stringer: News Digest Assistant",
       description:
         "A RAG news assistant: FastAPI over a NumPy cosine-similarity index on SQLite, with hybrid retrieval (semantic + keyword + recency decay) and near-duplicate suppression. A grounding gate withholds an answer rather than responding from unrelated articles, and an enrichment pipeline fetches full article context to fix headline-only feeds. Runs with zero API keys.",
       tags: ["Python", "FastAPI", "React", "RAG", "NumPy", "SQLite"],
@@ -141,7 +141,7 @@ export const site = {
     {
       title: "Treasury Management System (TMS)",
       description:
-        "Backend modules and REST APIs for the full investment lifecycle — cashflows, fixed deposits, mutual funds, borrowings and repayments — across 10+ banking integrations, including account validation, penny-drop verification and automated reconciliation. Systematized ~90% of treasury operations and eliminated 100+ daily manual entries.",
+        "Backend modules and REST APIs for the full investment lifecycle (cashflows, fixed deposits, mutual funds, borrowings and repayments) across 10+ banking integrations, including account validation, penny-drop verification and automated reconciliation. Systematized ~90% of treasury operations and eliminated 100+ daily manual entries.",
       tags: ["Django", "REST APIs", "MySQL", "Banking APIs"],
       featured: true,
     },
@@ -151,14 +151,14 @@ export const site = {
     {
       role: "Software Developer",
       company: "NeoGrowth Credit Pvt. Ltd.",
-      period: "Jun 2025 — Present",
+      period: "Jun 2025 - Present",
       logo: "/neogrowth.svg",
       summary:
-        "Building backend infrastructure for lending and treasury operations — regulatory reporting, cashflow management, and banking integrations.",
+        "Building backend infrastructure for lending and treasury operations: regulatory reporting, cashflow management and banking integrations.",
       highlights: [
         "Delivered an end-to-end Estimated Credit Loss (ECL) platform (Django, Celery, Redis, MySQL, Pandas) that eliminated human intervention in the monthly regulatory ECL process.",
-        "Built a Treasury Management System and REST APIs across 10+ banking integrations — account validation, penny-drop verification, automated reconciliation — cutting operational errors 60–70%.",
-        "Built asynchronous file-processing pipelines on AWS S3, Lambda and SNS (+80% throughput) and optimised MySQL reporting modules (−40% report generation time).",
+        "Built a Treasury Management System and REST APIs across 10+ banking integrations (account validation, penny-drop verification, automated reconciliation), cutting operational errors by 60 to 70%.",
+        "Built asynchronous file-processing pipelines on AWS S3, Lambda and SNS (80% more throughput) and optimised MySQL reporting modules (40% faster report generation).",
         "Wrote Django management commands to crawl SQL and MongoDB schemas for field-level structural changes with zero downtime, and migrated 10M+ records from MySQL to MongoDB with zero data loss.",
       ],
     },
@@ -168,7 +168,7 @@ export const site = {
     {
       degree: "Bachelor of Engineering",
       school: "BITS Pilani",
-      period: "2021 — 2025",
+      period: "2021 - 2025",
       image: "/bits-pilani.jpg",
     },
   ] as EducationItem[],
