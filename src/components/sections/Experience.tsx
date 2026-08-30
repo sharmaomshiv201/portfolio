@@ -5,7 +5,7 @@ import { SmartImage } from "@/components/SmartImage";
 
 export function Experience() {
   return (
-    <Section id="experience" label="05" title="Experience">
+    <Section id="experience" title="Experience">
       <ol className="relative border-l border-border">
         {site.experience.map((job, i) => (
           <li key={`${job.company}-${i}`} className="ml-6 pb-12 last:pb-0">

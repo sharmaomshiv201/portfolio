@@ -9,7 +9,6 @@ export function Education() {
   return (
     <Section
       id="education"
-      label="02"
       title="Education"
       bgImage={campus}
       bgImageAlt="BITS Pilani campus"

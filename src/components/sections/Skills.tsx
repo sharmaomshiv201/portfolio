@@ -5,12 +5,7 @@ import { TechGlyphs } from "@/components/TechGlyphs";
 
 export function Skills() {
   return (
-    <Section
-      id="skills"
-      label="03"
-      title="Skills"
-      backdrop={<TechGlyphs />}
-    >
+    <Section id="skills" title="Skills" backdrop={<TechGlyphs />}>
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {site.skills.map((group, i) => (
           <Reveal key={group.category} delay={i * 60}>

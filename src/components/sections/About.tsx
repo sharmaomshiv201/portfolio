@@ -5,7 +5,7 @@ import { Reveal } from "@/components/Reveal";
 
 export function About() {
   return (
-    <Section id="about" label="01" title="About">
+    <Section id="about" title="About">
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:gap-16">
         <Reveal className="max-w-2xl space-y-4 text-lg leading-relaxed text-muted">
           {site.about.map((p, i) => (

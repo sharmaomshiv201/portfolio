@@ -114,20 +114,6 @@ body::after {
   );
 }
 
-/* the big faded section numeral behind each heading */
-.section-numeral {
-  position: absolute;
-  left: -0.05em;
-  top: -0.62em;
-  font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: clamp(4.5rem, 12vw, 9rem);
-  line-height: 1;
-  color: color-mix(in oklab, var(--foreground) 5%, transparent);
-  user-select: none;
-  pointer-events: none;
-}
-
 /* Scroll-reveal */
 .reveal {
   opacity: 0;

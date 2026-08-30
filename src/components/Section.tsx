@@ -7,7 +7,6 @@ export const CONTAINER =
 
 export function Section({
   id,
-  label,
   title,
   children,
   className = "",
@@ -17,7 +16,6 @@ export function Section({
   backdrop,
 }: {
   id: string;
-  label: string;
   title: string;
   children: ReactNode;
   className?: string;
@@ -59,14 +57,11 @@ export function Section({
       )}
       <div className={`${CONTAINER} relative z-[1] py-20 sm:py-28 ${className}`}>
         <Reveal>
-          <header className="relative mb-12 sm:mb-16">
-            <span aria-hidden className="section-numeral">
-              {label}
-            </span>
-            <h2 className="relative text-3xl font-semibold tracking-tight sm:text-4xl">
+          <header className="mb-12 sm:mb-16">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
               {title}
             </h2>
-            <div className="relative mt-5 h-px w-full max-w-[420px] bg-gradient-to-r from-accent/60 via-border to-transparent" />
+            <div className="mt-5 h-px w-full max-w-[420px] bg-gradient-to-r from-accent/60 via-border to-transparent" />
           </header>
         </Reveal>
         {children}
