@@ -86,7 +86,7 @@ export const site = {
   /** Cloudflare Web Analytics beacon token (dash.cloudflare.com →
    *  Web Analytics → add site → copy the data-cf-beacon token).
    *  Leave empty to disable. Not a secret — it ships in the page. */
-  cloudflareToken: "",
+  cloudflareToken: "cdfed36530b2440cab78032f961ec39e",
 
   socials: [
     { label: "GitHub", href: "https://github.com/sharmaomshiv201" },
