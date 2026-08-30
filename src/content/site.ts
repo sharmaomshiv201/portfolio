@@ -63,9 +63,7 @@ export const site = {
 
   socials: [
     { label: "GitHub", href: "https://github.com/sharmaomshiv201" },
-    // Add more when ready, e.g.:
-    // { label: "LinkedIn", href: "https://linkedin.com/in/your-username" },
-    // { label: "X", href: "https://x.com/your-username" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/om-shiv/" },
   ] as Social[],
 
   skills: [
@@ -89,28 +87,26 @@ export const site = {
 
   projects: [
     {
-      title: "Project One",
+      title: "Stringer — News Digest Assistant",
       description:
-        "A short, punchy description of what this project does and why it mattered. Mention the impact or the interesting technical challenge.",
-      tags: ["Next.js", "TypeScript", "PostgreSQL"],
-      link: "https://example.com",
-      repo: "https://github.com/your-username/project-one",
+        "A RAG news assistant: FastAPI over a NumPy cosine-similarity index on SQLite, with hybrid retrieval (semantic + keyword + recency decay) and near-duplicate suppression. A grounding gate withholds an answer rather than responding from unrelated articles, and an enrichment pipeline fetches full article context to fix headline-only feeds. Runs with zero API keys.",
+      tags: ["Python", "FastAPI", "React", "RAG", "NumPy", "SQLite"],
+      repo: "https://github.com/sharmaomshiv201/stringer",
       featured: true,
     },
     {
-      title: "Project Two",
+      title: "Estimated Credit Loss (ECL) Processing System",
       description:
-        "Another project. Keep descriptions to one or two lines — the tags and links carry the rest.",
-      tags: ["React", "Vite", "Tailwind"],
-      repo: "https://github.com/your-username/project-two",
+        "An audit-grade ECL platform built at NeoGrowth that removed human intervention from the monthly regulatory reporting process. Asynchronous file-processing pipelines on AWS S3, Lambda and SNS raised throughput by ~80%, and MySQL reporting/validation tuning cut report generation time by ~40%.",
+      tags: ["Django", "Celery", "Redis", "AWS", "MySQL", "Pandas"],
       featured: true,
     },
     {
-      title: "Project Three",
+      title: "Treasury Management System (TMS)",
       description:
-        "A smaller experiment or tool. Even weekend projects are worth showing if they're interesting.",
-      tags: ["Node.js", "CLI"],
-      repo: "https://github.com/your-username/project-three",
+        "Backend modules and REST APIs for the full investment lifecycle — cashflows, fixed deposits, mutual funds, borrowings and repayments — across 10+ banking integrations, including account validation, penny-drop verification and automated reconciliation. Systematized ~90% of treasury operations and eliminated 100+ daily manual entries.",
+      tags: ["Django", "REST APIs", "MySQL", "Banking APIs"],
+      featured: true,
     },
   ] as Project[],
 
