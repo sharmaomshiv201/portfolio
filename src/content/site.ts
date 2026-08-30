@@ -54,6 +54,10 @@ export const site = {
   location: "India",
   /** Shown on the Contact section and used for the mailto: link */
   email: "omshiivv@gmail.com",
+  /** Portrait for the hero. Drop the file at /public/profile.jpg
+   *  (any name is fine as long as this path matches). If the file
+   *  is missing the hero falls back to an initials monogram. */
+  profileImage: "/profile.jpg",
   /** Résumé — hosted on Google Drive */
   resumeUrl:
     "https://drive.google.com/file/d/1V3tz4HcmyDSnPhLVA0yjCRZ4EFZJo1rO/view",

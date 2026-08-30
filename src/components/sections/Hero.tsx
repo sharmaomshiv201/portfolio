@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowDown, FileText, MapPin, Mail, Briefcase, Sparkles } from "lucide-react";
 import { site } from "@/content/site";
 import { Reveal } from "@/components/Reveal";
+import { Portrait } from "@/components/Portrait";
 import { CONTAINER } from "@/components/Section";
 
 export function Hero() {
@@ -86,27 +87,30 @@ export function Hero() {
           </Reveal>
         </div>
 
-        {/* right — snapshot */}
+        {/* right — portrait + snapshot */}
         <Reveal delay={220} className="lg:justify-self-end">
-          <dl className="w-full space-y-5 rounded-2xl border border-border bg-card/60 p-6 backdrop-blur-sm sm:p-7 lg:max-w-sm">
-            <Fact icon={<Briefcase size={15} />} term="Currently">
-              {current.role} · {current.company}
-            </Fact>
-            <Fact icon={<Sparkles size={15} />} term="Focus">
-              Backend infrastructure · fintech · RAG &amp; agentic systems
-            </Fact>
-            <Fact icon={<MapPin size={15} />} term="Location">
-              {site.location}
-            </Fact>
-            <Fact icon={<Mail size={15} />} term="Email">
-              <a
-                href={`mailto:${site.email}`}
-                className="break-all transition-colors hover:text-foreground"
-              >
-                {site.email}
-              </a>
-            </Fact>
-          </dl>
+          <div className="mx-auto w-full max-w-sm space-y-5">
+            <Portrait src={site.profileImage} name={site.name} />
+            <dl className="w-full space-y-5 rounded-2xl border border-border bg-card/60 p-6 backdrop-blur-sm sm:p-7">
+              <Fact icon={<Briefcase size={15} />} term="Currently">
+                {current.role} · {current.company}
+              </Fact>
+              <Fact icon={<Sparkles size={15} />} term="Focus">
+                Backend infrastructure · fintech · RAG &amp; agentic systems
+              </Fact>
+              <Fact icon={<MapPin size={15} />} term="Location">
+                {site.location}
+              </Fact>
+              <Fact icon={<Mail size={15} />} term="Email">
+                <a
+                  href={`mailto:${site.email}`}
+                  className="break-all transition-colors hover:text-foreground"
+                >
+                  {site.email}
+                </a>
+              </Fact>
+            </dl>
+          </div>
         </Reveal>
       </div>
     </section>
