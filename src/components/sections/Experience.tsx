@@ -16,11 +16,11 @@ export function Experience() {
             >
               <div>
                 {job.logo && (
-                  <div className="mb-3 inline-flex rounded-lg bg-white p-2 ring-1 ring-black/10">
+                  <div className="mb-4 inline-flex rounded-xl bg-white px-4 py-3 ring-1 ring-black/10">
                     <SmartImage
                       src={job.logo}
                       alt={job.company}
-                      className="h-6 w-auto"
+                      className="h-9 w-auto"
                     />
                   </div>
                 )}
