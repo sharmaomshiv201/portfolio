@@ -1,6 +1,6 @@
 # Portfolio
 
-A personal portfolio + blog. **Frontend only** — Next.js (App Router),
+A personal portfolio. **Frontend only** — Next.js (App Router),
 TypeScript, Tailwind CSS v4. No backend, no database. Every page is
 statically rendered at build time.
 
@@ -21,35 +21,22 @@ socials, and email there.
 
 | What | Where |
 |---|---|
-| Personal info, projects, experience, skills | `src/content/site.ts` |
-| Blog posts | `content/blog/*.md` (Markdown + front-matter) |
-| Résumé PDF | replace `public/resume.pdf` with your real file |
+| Personal info, projects, experience, education, skills | `src/content/site.ts` |
+| Portrait photo | `public/profile.jpeg` |
+| Campus photo (Education) | `public/bits-pilani.jpg` |
+| Résumé PDF (local copy for download) | `public/resume.pdf` |
+| Résumé link (primary) | `resumeUrl` in `src/content/site.ts` |
 | Colours / theme | CSS variables at the top of `src/app/globals.css` |
+| Favicon | `src/app/icon.tsx` (generated "OS" monogram) |
 | Nav items | `navLinks` in `src/content/site.ts` |
-
-### Blog posts
-
-Add a `.md` file to `content/blog/`. Front-matter:
-
-```md
----
-title: "Post title"
-date: "2026-08-20"
-excerpt: "One-line summary for the list page."
-tags: ["Next.js", "React"]
----
-
-Body in Markdown…
-```
-
-New posts appear automatically, newest first.
 
 ## Contact form
 
 The form posts straight from the browser to [Web3Forms](https://web3forms.com),
 which emails you each submission — no server required.
 
-1. Get a free access key at https://web3forms.com (takes ~30 seconds).
+1. Get a free access key at https://web3forms.com (enter your email, they send
+   you a key — ~30 seconds, no account needed).
 2. Add it to `.env.local`:
 
    ```
@@ -58,7 +45,8 @@ which emails you each submission — no server required.
 
 3. On your host (e.g. Vercel), add the same environment variable.
 
-Without a key, the form section shows a friendly `mailto:` fallback instead.
+Without a key the form falls back to opening the visitor's mail client with the
+note pre-filled.
 
 ## Deploy
 

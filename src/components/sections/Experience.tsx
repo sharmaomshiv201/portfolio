@@ -41,14 +41,23 @@ export function Experience() {
         ))}
       </ol>
       <Reveal>
-        <a
-          href={site.resumeUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-8 inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2.5 text-sm font-medium transition-colors hover:border-foreground/40"
-        >
-          Download full résumé (PDF)
-        </a>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <a
+            href={site.resumePdf}
+            download
+            className="inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2.5 text-sm font-medium transition-colors hover:border-foreground/40"
+          >
+            Download résumé (PDF)
+          </a>
+          <a
+            href={site.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium text-muted transition-colors hover:text-foreground"
+          >
+            View on Google Drive
+          </a>
+        </div>
       </Reveal>
     </Section>
   );

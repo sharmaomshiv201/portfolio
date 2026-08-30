@@ -39,6 +39,14 @@ export type ExperienceItem = {
   highlights: string[];
 };
 
+export type EducationItem = {
+  degree: string;
+  school: string;
+  period: string;
+  /** Optional campus photo at /public/... — omitted safely if missing */
+  image?: string;
+};
+
 export const site = {
   /** Used in <title>, meta tags, the hero, and the footer */
   name: "Om Shiv Sharma",
@@ -57,9 +65,11 @@ export const site = {
   /** Portrait for the hero — file lives at /public/profile.jpeg.
    *  If the file is missing the hero falls back to an initials monogram. */
   profileImage: "/profile.jpeg",
-  /** Résumé — hosted on Google Drive */
+  /** Résumé — Google Drive is the primary link (always current);
+   *  /public/resume.pdf is a local copy used for the direct download. */
   resumeUrl:
     "https://drive.google.com/file/d/1V3tz4HcmyDSnPhLVA0yjCRZ4EFZJo1rO/view",
+  resumePdf: "/resume.pdf",
 
   /** Absolute URL of the deployed site — used for SEO/OpenGraph */
   url: "https://your-domain.com",
@@ -151,13 +161,24 @@ export const site = {
     },
   ] as ExperienceItem[],
 
+  education: [
+    {
+      degree: "Bachelor of Engineering",
+      school: "BITS Pilani",
+      period: "2021 — 2025",
+      image: "/bits-pilani.jpg",
+    },
+  ] as EducationItem[],
+
   /**
-   * Contact form: submissions go straight from the browser to
-   * web3forms.com, which emails them to you. No server needed.
-   * 1. Get a free access key at https://web3forms.com (30 seconds).
-   * 2. Put it in .env.local as NEXT_PUBLIC_WEB3FORMS_KEY=...
-   * If the key is absent, the form gracefully falls back to a
-   * plain mailto: link.
+   * Contact form delivery. Submissions POST straight from the browser
+   * to web3forms.com, which emails them to you — no server needed.
+   *   1. Get a free access key at https://web3forms.com (enter your
+   *      email, they send you a key — ~30 seconds, no account).
+   *   2. Add it to .env.local:   NEXT_PUBLIC_WEB3FORMS_KEY=xxxx
+   *   3. Add the same var in your host's env (e.g. Vercel).
+   * Until a key is set the form falls back to opening the visitor's
+   * mail client with the note pre-filled.
    */
   web3formsKey: process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "",
 };
@@ -167,6 +188,6 @@ export const navLinks = [
   { label: "Skills", href: "/#skills" },
   { label: "Projects", href: "/#projects" },
   { label: "Experience", href: "/#experience" },
-  { label: "Writing", href: "/blog" },
+  { label: "Education", href: "/#education" },
   { label: "Contact", href: "/#contact" },
 ];

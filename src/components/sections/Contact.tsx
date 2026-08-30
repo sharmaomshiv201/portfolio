@@ -63,7 +63,7 @@ export function Contact() {
   }
 
   return (
-    <Section id="contact" label="05" title="Leave a note">
+    <Section id="contact" label="06" title="Leave a note">
       <div className="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:gap-16">
         <Reveal className="max-w-md space-y-4 text-lg leading-relaxed text-muted">
           <p>
