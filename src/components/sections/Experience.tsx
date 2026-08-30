@@ -1,6 +1,7 @@
 import { site } from "@/content/site";
 import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
+import { SmartImage } from "@/components/SmartImage";
 
 export function Experience() {
   return (
@@ -14,6 +15,15 @@ export function Experience() {
               className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:gap-12"
             >
               <div>
+                {job.logo && (
+                  <div className="mb-3 inline-flex rounded-lg bg-white p-2 ring-1 ring-black/10">
+                    <SmartImage
+                      src={job.logo}
+                      alt={job.company}
+                      className="h-6 w-auto"
+                    />
+                  </div>
+                )}
                 <div className="flex flex-wrap items-baseline gap-x-3">
                   <h3 className="text-lg font-semibold">
                     {job.role}{" "}

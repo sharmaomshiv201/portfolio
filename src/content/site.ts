@@ -37,6 +37,8 @@ export type ExperienceItem = {
   location?: string;
   summary: string;
   highlights: string[];
+  /** Optional company logo at /public/... (shown on a white chip) */
+  logo?: string;
 };
 
 export type EducationItem = {
@@ -150,6 +152,7 @@ export const site = {
       role: "Software Developer",
       company: "NeoGrowth Credit Pvt. Ltd.",
       period: "Jun 2025 — Present",
+      logo: "/neogrowth.svg",
       summary:
         "Building backend infrastructure for lending and treasury operations — regulatory reporting, cashflow management, and banking integrations.",
       highlights: [
