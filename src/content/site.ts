@@ -41,19 +41,19 @@ export type ExperienceItem = {
 
 export const site = {
   /** Used in <title>, meta tags, the hero, and the footer */
-  name: "Om Sharma",
-  role: "Full-Stack Developer",
+  name: "Om Shiv Sharma",
+  role: "Backend Engineer",
   /** One or two sentences. Shows under your name in the hero. */
   tagline:
-    "I build fast, accessible web apps with React, Next.js and TypeScript — from first sketch to production deploy.",
+    "Backend engineer building fintech infrastructure at scale — audit-grade credit-loss and treasury systems on Django, Celery and AWS. Building RAG and agentic systems on the side.",
   /** Longer paragraph(s) for the About section */
   about: [
-    "I'm a developer focused on the frontend and the seams where it meets the backend. I care about clean interfaces, sensible data flow, and shipping things people actually enjoy using.",
-    "Outside of work I tinker with side projects, contribute to open source, and write about what I learn.",
+    "I'm a backend engineer at NeoGrowth, where I build fintech infrastructure at scale — from an audit-grade Estimated Credit Loss platform to a Treasury Management System spanning 10+ banking integrations. My core stack is Python, Django, Celery, Redis and AWS, backed by MySQL and MongoDB.",
+    "Outside work I build RAG and agentic systems independently, with a focus on retrieval architecture and LLM-provider abstraction.",
   ],
   location: "India",
   /** Shown on the Contact section and used for the mailto: link */
-  email: "sharmaomshiv201@gmail.com",
+  email: "omshiivv@gmail.com",
   /** Résumé — hosted on Google Drive */
   resumeUrl:
     "https://drive.google.com/file/d/1V3tz4HcmyDSnPhLVA0yjCRZ4EFZJo1rO/view",
@@ -69,19 +69,41 @@ export const site = {
   skills: [
     {
       category: "Languages",
-      items: ["TypeScript", "JavaScript", "Python", "SQL", "HTML", "CSS"],
+      items: ["Python", "C++", "SQL", "JavaScript"],
     },
     {
-      category: "Frontend",
-      items: ["React", "Next.js", "Tailwind CSS", "Redux", "Vite", "Framer Motion"],
+      category: "Backend & Frameworks",
+      items: [
+        "Django",
+        "FastAPI",
+        "REST APIs",
+        "Celery",
+        "Redis",
+        "Gunicorn",
+        "Nginx",
+        "React",
+      ],
     },
     {
-      category: "Backend & Data",
-      items: ["Node.js", "Express", "PostgreSQL", "Prisma", "REST", "GraphQL"],
+      category: "Data & ML",
+      items: ["Pandas", "NumPy", "SQLAlchemy", "MySQL", "MongoDB"],
     },
     {
-      category: "Tooling",
-      items: ["Git", "Docker", "Vercel", "Jest", "Playwright", "GitHub Actions"],
+      category: "Cloud & DevOps",
+      items: ["AWS (S3, Lambda, SNS, Fargate)", "Git", "Docker"],
+    },
+    {
+      category: "AI & LLM Systems",
+      items: [
+        "RAG Architecture",
+        "LangChain",
+        "Vector Search",
+        "Multi-Provider LLM Integration",
+      ],
+    },
+    {
+      category: "CS Fundamentals",
+      items: ["Data Structures & Algorithms", "System Design", "OOP"],
     },
   ] as SkillGroup[],
 
@@ -113,26 +135,15 @@ export const site = {
   experience: [
     {
       role: "Software Developer",
-      company: "Company Name",
-      period: "2023 — Present",
-      location: "Remote",
+      company: "NeoGrowth Credit Pvt. Ltd.",
+      period: "Jun 2025 — Present",
       summary:
-        "One line on your remit — what team, what product, what you own.",
+        "Building backend infrastructure for lending and treasury operations — regulatory reporting, cashflow management, and banking integrations.",
       highlights: [
-        "Shipped X, which did Y and moved metric Z by N%.",
-        "Led the migration from A to B across the codebase.",
-        "Mentored two junior engineers and ran the frontend guild.",
-      ],
-    },
-    {
-      role: "Frontend Developer (Intern)",
-      company: "Earlier Company",
-      period: "2022 — 2023",
-      location: "Hybrid",
-      summary: "Where you started and what you built.",
-      highlights: [
-        "Built the component library used across three products.",
-        "Cut the main bundle size by 40% with code-splitting.",
+        "Delivered an end-to-end Estimated Credit Loss (ECL) platform (Django, Celery, Redis, MySQL, Pandas) that eliminated human intervention in the monthly regulatory ECL process.",
+        "Built a Treasury Management System and REST APIs across 10+ banking integrations — account validation, penny-drop verification, automated reconciliation — cutting operational errors 60–70%.",
+        "Built asynchronous file-processing pipelines on AWS S3, Lambda and SNS (+80% throughput) and optimised MySQL reporting modules (−40% report generation time).",
+        "Wrote Django management commands to crawl SQL and MongoDB schemas for field-level structural changes with zero downtime, and migrated 10M+ records from MySQL to MongoDB with zero data loss.",
       ],
     },
   ] as ExperienceItem[],
